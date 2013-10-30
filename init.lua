@@ -52,6 +52,48 @@ minetest.register_node("windmill:windmill_reverse", {
 })
 
 
+minetest.register_node("windmill:windmill_sails", {
+	description = "Windmill sails (clockwise)",
+	drawtype = "signlike", 
+        visual_scale = 6.0,
+	tiles = {
+		{name="windmill_wooden_ccw_with_sails.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
+	},
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
+	walkable = false,
+	selection_box = {
+		type = "wallmounted",
+		wall_side   = {-0.4, -2.5, -2.5, -0.2, 2.5, 2.5},
+	},
+	groups = {choppy=2,dig_immediate=3,attached_node=1},
+	legacy_wallmounted = true,
+})
+
+
+-- this one rotates in the opposite direction than the first one
+minetest.register_node("windmill:windmill_sails_reverse", {
+	description = "Windmill sails (counterclockwise)",
+	drawtype = "signlike",
+        visual_scale = 6.0,
+	tiles = {
+		{name="windmill_wooden_ccw_with_sails.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
+	},
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
+	walkable = false,
+	selection_box = {
+		type = "wallmounted",
+		wall_side   = {-0.4, -2.5, -2.5, -0.2, 2.5, 2.5},
+	},
+	groups = {choppy=2,dig_immediate=3,attached_node=1},
+	legacy_wallmounted = true,
+})
+
+
+
 minetest.register_node("windmill:axis", {
 	description = "Axis for mounting windmills",
 	drawtype = "nodebox",
@@ -90,6 +132,25 @@ minetest.register_craft({
 minetest.register_craft({
         output = "windmill:windmill_reverse",
         recipe = {{ "windmill:windmill" }},
+})
+
+minetest.register_craft({
+        output = "windmill:windmill_sails",
+        recipe = {
+                {"wool:white",          "",                    "wool:white",          },
+                {"",                    "default:stick",       "",                    },
+                {"wool:white",          "",                    "wool:white",          },
+        }
+})
+
+minetest.register_craft({
+        output = "windmill:windmill_sails",
+        recipe = {{ "windmill:windmill_sails_reverse" }},
+})
+
+minetest.register_craft({
+        output = "windmill:windmill_sails_reverse",
+        recipe = {{ "windmill:windmill_sails" }},
 })
 
 minetest.register_craft({
