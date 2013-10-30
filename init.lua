@@ -63,7 +63,7 @@ minetest.register_node("windmill:windmill_sails", {
 	drawtype = "signlike", 
         visual_scale = 6.0,
 	tiles = {
-		{name="windmill_wooden_ccw_with_sails.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
+		{name="windmill_wooden_cw_with_sails.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
 	},
 	inventory_image = "windmill_wooden_inv.png",
 	wield_image     = "windmill_wooden_inv.png",
