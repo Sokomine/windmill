@@ -8,9 +8,19 @@ Crafting: steel_ingot  -nothing-  steel_ingot
           steel_ingot  -nothing-  steel_ingot
 
 Clockwise- and counterclockwise rotating rotors can be crafted into each other.
+
+
+NEW: Windmill sails for historic windmills:
+
+Crafting: white wool   -nothing-  white wool 
+                         stick               
+          white wool   -nothing-  white wool 
+
+
+The axis is mostly a decorative node to which you can attach your mill rotors.
    
 Axis:     steel_ingot    stick    steel_ingot
-The axis is mostly a decorative node to which you can attach your mill rotors.
+
 
 Liscences: for code (written by Sokomine): WTFPL (it's really only a demonstration)
-           for animated textures (created by VanessaE): 
+           for animated textures (created by VanessaE): WTFPL
