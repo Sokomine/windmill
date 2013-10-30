@@ -77,7 +77,7 @@ end
 
 windmill.register_windmill( "windmill:windmill",       "Windmill rotors",
 			"windmill.png", "windmill_reverse.png",
-			6.0, "windmill_inv.png", 1.0, "default:steel_ingot" );
+			6.0, "windmill_4blade_inv.png", 1.0, "default:steel_ingot" );
 
 windmill.register_windmill( "windmill:windmill_modern", "Windmill turbine",
 			"windmill_3blade_cw.png", "windmill_3blade_ccw.png",
@@ -86,6 +86,10 @@ windmill.register_windmill( "windmill:windmill_modern", "Windmill turbine",
 windmill.register_windmill( "windmill:windmill_sails", "Windmill sails",
 			"windmill_wooden_cw_with_sails.png", "windmill_wooden_ccw_with_sails.png",
 			6.0, "windmill_wooden_inv.png", 1.0, "wool:white" );
+
+windmill.register_windmill( "windmill:windmill_idle",  "Windmill idle",
+			"windmill_wooden_cw.png", "windmill_wooden_ccw.png",
+			6.0, "windmill_wooden_no_sails_inv.png", 2.0, "default:wood" );
 
 
 minetest.register_node("windmill:axis", {
