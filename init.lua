@@ -94,7 +94,7 @@ windmill.register_windmill( "windmill:windmill_idle",  "Windmill idle",
 -- this one is smaller than the other ones
 windmill.register_windmill( "windmill:windmill_farm", "Windmill found on farms",
 			"windmill_farm_cw.png", "windmill_farm_cw.png",
-			3.0, "windmill_farm_inv.png", 1.0, "default:stick" );
+			3.0, "windmill_farm_inv.png", 0.5, "default:stick" );
 
 
 minetest.register_node("windmill:axis", {
