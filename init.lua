@@ -1,16 +1,19 @@
 
-minetest.register_node("windmill:windmill", {
-	description = "Windmill rotors (clockwise)",
+
+windmill = {}
+
+windmill.register_windmill = function( nodename, descr, animation_png, animation_png_reverse, scale, inventory_image, animation_speed, craft_material )
+
+    minetest.register_node( nodename, {
+	description = descr.." (clockwise)",
 	drawtype = "signlike", 
-        visual_scale = 6.0,
+        visual_scale = scale,
 	tiles = {
-		{name="windmill.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
+		{name=animation_png, animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=animation_speed}},
 	},
-	inventory_image = "windmill_inv.png^[transformFX",
-	wield_image     = "windmill_inv.png^[transformFX",
+	inventory_image = inventory_image.."^[transformFX",
+	wield_image     = inventory_image.."^[transformFX",
 	wield_scale = {x=1, y=1, z=1},
---	inventory_image = "default_torch_on_floor.png",
---	wield_image = "default_torch_on_floor.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
@@ -18,29 +21,25 @@ minetest.register_node("windmill:windmill", {
 	light_source = 1, -- reflecting a bit of light might be expected
 	selection_box = {
 		type = "wallmounted",
---		wall_top =    {-0.1,  0.5-2.6, -0.1, 0.1, 0.5, 0.1},
---		wall_bottom = {-0.1, -0.5, -0.1, 0.1, -0.5+2.6, 0.1},
 		wall_side   = {-0.4, -2.5, -2.5, -0.2, 2.5, 2.5},
 	},
 	groups = {choppy=2,dig_immediate=3,attached_node=1},
 	legacy_wallmounted = true,
 
-})
+    })
 
 
--- this one rotates in the opposite direction than the first one
-minetest.register_node("windmill:windmill_reverse", {
-	description = "Windmill rotors (counterclockwise)",
+    -- this one rotates in the opposite direction than the first one
+    minetest.register_node( nodename.."_reverse", {
+	description = descr.." (counterclockwise)",
 	drawtype = "signlike",
-        visual_scale = 6.0,
+        visual_scale = scale,
 	tiles = {
-		{name="windmill_reverse.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
+		{name=animation_png_reverse, animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=animation_speed}},
 	},
-	inventory_image = "windmill_inv.png",
-	wield_image     = "windmill_inv.png",
+	inventory_image = inventory_image,
+	wield_image     = inventory_image,
 	wield_scale = {x=1, y=1, z=1},
---	inventory_image = "default_torch_on_floor.png",
---	wield_image = "default_torch_on_floor.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
@@ -48,62 +47,45 @@ minetest.register_node("windmill:windmill_reverse", {
 	light_source = 1, -- reflecting a bit of light might be expected
 	selection_box = {
 		type = "wallmounted",
---		wall_top =    {-0.1,  0.5-2.6, -0.1, 0.1, 0.5, 0.1},
---		wall_bottom = {-0.1, -0.5, -0.1, 0.1, -0.5+2.6, 0.1},
 		wall_side   = {-0.4, -2.5, -2.5, -0.2, 2.5, 2.5},
 	},
 	groups = {choppy=2,dig_immediate=3,attached_node=1},
 	legacy_wallmounted = true,
 
+    })
+
+    minetest.register_craft({
+        output = nodename.."_reverse",
+        recipe = {{ nodename }},
+    }) 
+
+    minetest.register_craft({
+        output = nodename,
+        recipe = {{ nodename.."_reverse" }},
+    })
+
+    minetest.register_craft({
+        output = nodename,
+        recipe = {
+                { craft_material,       "",                    craft_material },
+                { "",                   "default:stick",       "",             },
+                { craft_material,       "",                    craft_material },
+        }
 })
+end
 
 
-minetest.register_node("windmill:windmill_sails", {
-	description = "Windmill sails (clockwise)",
-	drawtype = "signlike", 
-        visual_scale = 6.0,
-	tiles = {
-		{name="windmill_wooden_cw_with_sails.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
-	},
-	inventory_image = "windmill_wooden_inv.png^[transformFX",
-	wield_image     = "windmill_wooden_inv.png^[transformFX",
-	wield_scale = {x=1, y=1, z=1},
-	paramtype = "light",
-	paramtype2 = "wallmounted",
-	sunlight_propagates = true,
-	walkable = false,
-	selection_box = {
-		type = "wallmounted",
-		wall_side   = {-0.4, -2.5, -2.5, -0.2, 2.5, 2.5},
-	},
-	groups = {choppy=2,dig_immediate=3,attached_node=1},
-	legacy_wallmounted = true,
-})
+windmill.register_windmill( "windmill:windmill",       "Windmill rotors",
+			"windmill.png", "windmill_reverse.png",
+			6.0, "windmill_inv.png", 1.0, "default:steel_ingot" );
 
+windmill.register_windmill( "windmill:windmill_modern", "Windmill turbine",
+			"windmill_3blade_cw.png", "windmill_3blade_ccw.png",
+			6.0, "windmill_3blade_inv.png", 1.0, "homedecor:plastic_sheet" );
 
--- this one rotates in the opposite direction than the first one
-minetest.register_node("windmill:windmill_sails_reverse", {
-	description = "Windmill sails (counterclockwise)",
-	drawtype = "signlike",
-        visual_scale = 6.0,
-	tiles = {
-		{name="windmill_wooden_ccw_with_sails.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
-	},
-	inventory_image = "windmill_wooden_inv.png",
-	wield_image     = "windmill_wooden_inv.png",
-	wield_scale = {x=1, y=1, z=1},
-	paramtype = "light",
-	paramtype2 = "wallmounted",
-	sunlight_propagates = true,
-	walkable = false,
-	selection_box = {
-		type = "wallmounted",
-		wall_side   = {-0.4, -2.5, -2.5, -0.2, 2.5, 2.5},
-	},
-	groups = {choppy=2,dig_immediate=3,attached_node=1},
-	legacy_wallmounted = true,
-})
-
+windmill.register_windmill( "windmill:windmill_sails", "Windmill sails",
+			"windmill_wooden_cw_with_sails.png", "windmill_wooden_ccw_with_sails.png",
+			6.0, "windmill_wooden_inv.png", 1.0, "wool:white" );
 
 
 minetest.register_node("windmill:axis", {
@@ -126,44 +108,6 @@ minetest.register_node("windmill:axis", {
 	},
 })
 
-
-minetest.register_craft({
-        output = "windmill:windmill",
-        recipe = {
-                {"default:steel_ingot", "",                    "default:steel_ingot", },
-                {"",                    "default:stick",       "",                    },
-                {"default:steel_ingot", "",                    "default:steel_ingot"  },
-        }
-})
-
-minetest.register_craft({
-        output = "windmill:windmill",
-        recipe = {{ "windmill:windmill_reverse" }},
-})
-
-minetest.register_craft({
-        output = "windmill:windmill_reverse",
-        recipe = {{ "windmill:windmill" }},
-})
-
-minetest.register_craft({
-        output = "windmill:windmill_sails",
-        recipe = {
-                {"wool:white",          "",                    "wool:white",          },
-                {"",                    "default:stick",       "",                    },
-                {"wool:white",          "",                    "wool:white",          },
-        }
-})
-
-minetest.register_craft({
-        output = "windmill:windmill_sails",
-        recipe = {{ "windmill:windmill_sails_reverse" }},
-})
-
-minetest.register_craft({
-        output = "windmill:windmill_sails_reverse",
-        recipe = {{ "windmill:windmill_sails" }},
-})
 
 minetest.register_craft({
         output = "windmill:axis",
