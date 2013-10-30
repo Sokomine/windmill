@@ -13,6 +13,7 @@ With MATERIAL beeing
 	 homedecor plastic sheet for 3-blade turbine
          white wool for historic windmill sails
          wood for historic windmill without sails (rotates very slowly)
+         stick for us-style farm windmill
 
 Clockwise- and counterclockwise rotating rotors can be crafted into each other.
 
