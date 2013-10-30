@@ -6,8 +6,8 @@ minetest.register_node("windmill:windmill", {
 	tiles = {
 		{name="windmill.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
 	},
-	inventory_image = "windmill_inv.png",
-	wield_image     = "windmill_inv.png",
+	inventory_image = "windmill_inv.png^[transformFX",
+	wield_image     = "windmill_inv.png^[transformFX",
 	wield_scale = {x=1, y=1, z=1},
 --	inventory_image = "default_torch_on_floor.png",
 --	wield_image = "default_torch_on_floor.png",
@@ -65,8 +65,8 @@ minetest.register_node("windmill:windmill_sails", {
 	tiles = {
 		{name="windmill_wooden_cw_with_sails.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
 	},
-	inventory_image = "windmill_wooden_inv.png",
-	wield_image     = "windmill_wooden_inv.png",
+	inventory_image = "windmill_wooden_inv.png^[transformFX",
+	wield_image     = "windmill_wooden_inv.png^[transformFX",
 	wield_scale = {x=1, y=1, z=1},
 	paramtype = "light",
 	paramtype2 = "wallmounted",
