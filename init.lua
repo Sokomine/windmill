@@ -2,7 +2,7 @@
 
 windmill = {}
 
-windmill.register_windmill = function( nodename, descr, animation_png, animation_png_reverse, scale, inventory_image, animation_speed, craft_material )
+windmill.register_windmill = function( nodename, descr, animation_png, animation_png_reverse, scale, inventory_image, animation_speed, craft_material, sel_radius )
 
     minetest.register_node( nodename, {
 	description = descr.." (clockwise)",
@@ -21,7 +21,7 @@ windmill.register_windmill = function( nodename, descr, animation_png, animation
 	light_source = 1, -- reflecting a bit of light might be expected
 	selection_box = {
 		type = "wallmounted",
-		wall_side   = {-0.4, -2.5, -2.5, -0.2, 2.5, 2.5},
+		wall_side   = {-0.4, -sel_radius, -sel_radius, -0.2, sel_radius, sel_radius},
 	},
 	groups = {choppy=2,dig_immediate=3,attached_node=1},
 	legacy_wallmounted = true,
@@ -31,7 +31,7 @@ windmill.register_windmill = function( nodename, descr, animation_png, animation
 
     -- this one rotates in the opposite direction than the first one
     minetest.register_node( nodename.."_reverse", {
-	description = descr.." (counterclockwise)",
+	description = descr.." (counter-clockwise)",
 	drawtype = "signlike",
         visual_scale = scale,
 	tiles = {
@@ -47,7 +47,7 @@ windmill.register_windmill = function( nodename, descr, animation_png, animation
 	light_source = 1, -- reflecting a bit of light might be expected
 	selection_box = {
 		type = "wallmounted",
-		wall_side   = {-0.4, -2.5, -2.5, -0.2, 2.5, 2.5},
+		wall_side   = {-0.4, -sel_radius, -sel_radius, -0.2, sel_radius, sel_radius},
 	},
 	groups = {choppy=2,dig_immediate=3,attached_node=1},
 	legacy_wallmounted = true,
@@ -77,24 +77,24 @@ end
 
 windmill.register_windmill( "windmill:windmill",       "Windmill rotors",
 			"windmill.png", "windmill_reverse.png",
-			6.0, "windmill_4blade_inv.png", 1.0, "default:steel_ingot" );
+			6.0, "windmill_4blade_inv.png", 1.0, "default:steel_ingot", 2.9 );
 
 windmill.register_windmill( "windmill:windmill_modern", "Windmill turbine",
 			"windmill_3blade_cw.png", "windmill_3blade_ccw.png",
-			6.0, "windmill_3blade_inv.png", 1.0, "homedecor:plastic_sheet" );
+			6.0, "windmill_3blade_inv.png", 1.0, "homedecor:plastic_sheet", 2.9 );
 
 windmill.register_windmill( "windmill:windmill_sails", "Windmill sails",
 			"windmill_wooden_cw_with_sails.png", "windmill_wooden_ccw_with_sails.png",
-			6.0, "windmill_wooden_inv.png", 1.0, "wool:white" );
+			6.0, "windmill_wooden_inv.png", 1.0, "wool:white", 3 );
 
 windmill.register_windmill( "windmill:windmill_idle",  "Windmill idle",
 			"windmill_wooden_cw.png", "windmill_wooden_ccw.png",
-			6.0, "windmill_wooden_no_sails_inv.png", 2.0, "default:wood" );
+			6.0, "windmill_wooden_no_sails_inv.png", 2.0, "default:wood", 3 );
 
 -- this one is smaller than the other ones
 windmill.register_windmill( "windmill:windmill_farm", "Windmill found on farms",
 			"windmill_farm_cw.png", "windmill_farm_cw.png",
-			3.0, "windmill_farm_inv.png", 0.5, "default:stick" );
+			3.0, "windmill_farm_inv.png", 0.5, "default:stick", 1.5 );
 
 minetest.register_node("windmill:axis", {
 	description = "Axis for mounting windmills",
