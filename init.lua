@@ -81,7 +81,7 @@ windmill.register_windmill( "windmill:windmill",       "Windmill rotors",
 
 windmill.register_windmill( "windmill:windmill_modern", "Windmill turbine",
 			"windmill_3blade_cw.png", "windmill_3blade_ccw.png",
-			6.0, "windmill_3blade_inv.png", 1.0, "homedecor:plastic_sheet", 2.9 );
+			6.0, "windmill_3blade_inv.png", 1.0, "homedecor:plastic_sheeting", 2.9 );
 
 windmill.register_windmill( "windmill:windmill_sails", "Windmill sails",
 			"windmill_wooden_cw_with_sails.png", "windmill_wooden_ccw_with_sails.png",
