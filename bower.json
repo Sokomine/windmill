@@ -1,0 +1,16 @@
+{
+    "name": "windmil",
+    "description": "animated windmill wings and watermill wheel (upcoming); uses signlike drawtype",
+    "keywords": [
+        "windmil"
+    ],
+    "homepage": "https://github.com/Sokomine/windmill",
+    "forum": "http://forum.minetest.net/viewtopic.php?f=11&t=7440",
+    "screenshots": [
+        "https://cloud.githubusercontent.com/assets/51875/9275464/6afaedba-42dc-11e5-9fca-524199cb0c3a.png",
+        "https://cloud.githubusercontent.com/assets/51875/9275478/7813ccc4-42dc-11e5-8422-e1fb9d0e4631.png"
+    ],
+    "authors": [
+        "Sokomine"
+    ]
+}
